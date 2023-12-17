@@ -1,0 +1,47 @@
+const mongoose = require('mongoose');
+
+const clinicSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  daysOpen: [String], // Days the clinic is open (e.g., ['Monday', 'Wednesday'])
+  timings: {
+    type: String,
+    required: true,
+  },
+  commissionedContacts: [String], // Contact information for commissioned individuals
+  clinicTemplate: String,
+  uniqueIdentifier: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  doctors: [{
+    type: mongoose.Schema.Types.ObjectId,
+    
+  }],
+  medicalServicesAvailable: [String], // List of available medical services
+  patientRecords: {
+    patientDatabase: [{
+      type: mongoose.Schema.Types.ObjectId,
+    
+    }],
+    appointmentHistory: [String], // Array of appointment history
+    medicalRecordsStorage: [String], // Array of medical records storage
+  },
+  certificationsAndLicenses: [String], // Certifications and licenses held by the clinic
+  status: {
+    type: String,
+    enum: ['Active', 'Inactive'],
+    default: 'Active',
+  },
+});
+
+const Clinic = mongoose.model('Clinic', clinicSchema);
+
+module.exports = Clinic;

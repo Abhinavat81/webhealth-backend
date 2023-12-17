@@ -7,7 +7,7 @@ const express = require("express");
 
 // const cors = require("cors");
 // const bodyParser = require("body-parser");
-// const loginController = require("../../controllers/loginController");
+const loginController = require("../../controllers/login");
 const { requireAuth } = require("../../middlewares/authMiddleware");
 // const multer = require("multer");
 
@@ -47,7 +47,7 @@ const router = express.Router();
 // router.route("/coursesStatusCount").get(requireAuth, getAllCoursesStatusCount);
 // router.route("/weeklyStatusCourseAdd").post(updateWeeklyStatusForUserOnCourse);
 // router.route("/sendEmailNotificationAction").post(handleEmailNotification);
-// router.route("/login").post(loginController);
+router.route("/login").post(loginController);
 // router.route("/performance/getAllUsersReports").get(requireAuth, getAllUsersReports);
 // router.route("/performance/getInternInfo").post(exportInternData);
 // router.route("/performance/getTopandPoorPerformer").get(getTopandPoorPerformer);
